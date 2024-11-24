@@ -43,6 +43,10 @@ This project is an API for storing and retrieving information about contacts, su
 
 ## API Reference
 
+### Base URL
+
+- **URL:** `https://contacts-api-123.onrender.com`
+
 ### Get All Contacts
 
 - **Endpoint:** `/contacts`
@@ -67,7 +71,7 @@ This project is an API for storing and retrieving information about contacts, su
 
 A video demonstrating the functionality of this project is available on YouTube:
 
-- [Project Demo Video](https://www.youtube.com/your-video-link)
+- [Project Demo Video](https://youtu.be/qBIxI_yAL14)
 
 ## License
 
