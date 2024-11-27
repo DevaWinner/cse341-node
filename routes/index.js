@@ -6,12 +6,19 @@ const { initializeDatabase } = require("../data/database");
 const contactsRoutes = require("./contacts");
 const homeRoutes = require("./home");
 
+// Swagger setup
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("../swaggerConfig");
+
 // parse JSON data
 app.use(express.json());
 
 // Routes
 app.use("/contacts", contactsRoutes);
 app.use("/", homeRoutes);
+
+// Swagger UI route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (error) => {
