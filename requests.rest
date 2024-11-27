@@ -18,3 +18,31 @@ Accept: application/json
 ### Get a contact by id
 GET http://localhost:3000/contacts/6742813e22c10d709ce17aa4
 Accept: application/json
+
+
+### Create a new contact
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Aniekan",
+  "lastName": "Winner",
+  "email": "aniekan.winner@example.com",
+  "favoriteColor": "Pink",
+  "birthday": "1995-09-18T00:00:00Z"
+}
+
+### Update a contact
+PUT http://localhost:3000/contacts/6746a4046b4541947d3a7780
+Content-Type: application/json
+
+{
+  "firstName": "Ethan",
+  "lastName": "Hunt",
+  "email": "hunt.ethan@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1976-11-30T00:00:00.000Z"
+}
+
+### Delete a contact
+DELETE http://localhost:3000/contacts/6746a4046b4541947d3a7780
