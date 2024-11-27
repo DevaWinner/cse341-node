@@ -10,7 +10,7 @@ const options = {
 		},
 		servers: [
 			{
-				url: "http://localhost:3000",
+				url: "https://cse341-node-9dp6.onrender.com",
 			},
 		],
 		components: {
