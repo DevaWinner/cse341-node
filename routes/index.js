@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -8,16 +9,46 @@ const homeRoutes = require("./home");
 
 // Swagger setup
 const swaggerUi = require("swagger-ui-express");
-const swaggerSpec = require("../swaggerConfig");
+const swaggerJSDoc = require("swagger-jsdoc");
+
+// Swagger definition and options
+const swaggerDefinition = {
+	openapi: "3.0.0",
+	info: {
+		title: "Contacts API",
+		version: "1.0.0",
+		description: "API for managing contacts",
+	},
+	servers: [
+		{
+			url: "https://cse341-node-9dp6.onrender.com",
+		},
+	],
+};
+
+const options = {
+	swaggerDefinition,
+	apis: ["./routes/*.js", "./controllers/*.js"],
+};
+
+// Initialize swagger-jsdoc
+const swaggerSpec = swaggerJSDoc(options);
 
 // parse JSON data
 app.use(express.json());
+
+// Configure CORS to allow localhost
+app.use(
+	cors({
+		origin: "https://cse341-node-9dp6.onrender.com",
+	})
+);
 
 // Routes
 app.use("/contacts", contactsRoutes);
 app.use("/", homeRoutes);
 
-// Swagger UI route
+// Serve Swagger UI with generated spec
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Handle unhandled promise rejections

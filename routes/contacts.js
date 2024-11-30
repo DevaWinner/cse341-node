@@ -11,6 +11,92 @@ const contactsController = require("../controllers/contactsController");
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Contact:
+ *       type: object
+ *       required:
+ *         - firstName
+ *         - lastName
+ *         - email
+ *         - favoriteColor
+ *         - birthday
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The auto-generated id of the contact.
+ *         firstName:
+ *           type: string
+ *           description: The first name of the contact.
+ *         lastName:
+ *           type: string
+ *           description: The last name of the contact.
+ *         email:
+ *           type: string
+ *           description: The email address of the contact.
+ *         favoriteColor:
+ *           type: string
+ *           description: The favorite color of the contact.
+ *         birthday:
+ *           type: string
+ *           format: date
+ *           description: The birthday of the contact.
+ *       example:
+ *         firstName: Abigail
+ *         lastName: Johnson
+ *         email: abi.jo@example.com
+ *         favoriteColor: Blue
+ *         birthday: 1990-01-01
+ *     ContactInput:
+ *       type: object
+ *       required:
+ *         - firstName
+ *         - lastName
+ *         - email
+ *         - favoriteColor
+ *         - birthday
+ *       properties:
+ *         firstName:
+ *           type: string
+ *           description: The first name of the contact.
+ *         lastName:
+ *           type: string
+ *           description: The last name of the contact.
+ *         email:
+ *           type: string
+ *           description: The email address of the contact.
+ *         favoriteColor:
+ *           type: string
+ *           description: The favorite color of the contact.
+ *         birthday:
+ *           type: string
+ *           format: date
+ *           description: The birthday of the contact.
+ *       example:
+ *         firstName: ""
+ *         lastName: ""
+ *         email: ""
+ *         favoriteColor: ""
+ *         birthday: ""
+ *     ContactResponse:
+ *       allOf:
+ *         - $ref: '#/components/schemas/ContactInput'
+ *         - type: object
+ *           properties:
+ *             id:
+ *               type: string
+ *               description: The auto-generated id of the contact.
+ *       example:
+ *         id: 60f7f9b2e1d3c0b1c8a9e123
+ *         firstName: Abigail
+ *         lastName: Johnson
+ *         email: abi.jo@example.com
+ *         favoriteColor: Blue
+ *         birthday: 1990-01-01
+ */
+
+/**
+ * @swagger
  * /contacts:
  *   get:
  *     summary: Get all contacts
